@@ -36,14 +36,15 @@ plot.lm.madlib <-
     show[which] <- TRUE
     r <- residuals(x)
     yh <- predict(x) # != fitted() for glm
-    w <- weights(x)
-    if(!is.null(w)) { # drop obs with zero wt: PR#6640
-        wind <- w != 0
-        r <- r[wind]
-        yh <- yh[wind]
-        w <- w[wind]
-        labels.id <- labels.id[wind]
-    }
+    ## ## w <- weights(x)
+    ## w <- NULL
+    ## if(!is.null(w)) { # drop obs with zero wt: PR#6640
+    ##     wind <- w != 0
+    ##     r <- r[wind]
+    ##     yh <- yh[wind]
+    ##     w <- w[wind]
+    ##     labels.id <- labels.id[wind]
+    ## }
     n <- length(r)
     if (any(show[2L:6L])) {
         s <- if (inherits(x, "rlm")) x$s
